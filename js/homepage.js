@@ -1,5 +1,7 @@
 const list = document.querySelector('#recipes');
 let allIngredients = [];
+let allAppliances = [];
+let allUstensils= [];
 
 createDOM();
 
@@ -21,7 +23,7 @@ function createDOM(){
 		cardContainer.classList.add('col-md-12', 'col-lg-6', 'col-xl-4', 'blocRecipe');
 		card.classList.add('card', 'border-0', 'mb-4');
 		img.classList.add('card-img-top');
-		cardBody.classList.add('bg-secondary');
+		cardBody.classList.add('bg-light');
 		infos.classList.add('row', 'justify-content-between');
 		title.classList.add('col-9');
 		time.classList.add('col-3', 'text-right', 'font-weight-bold', 'h2', 'time', 'position-relative');
@@ -63,6 +65,16 @@ function createDOM(){
 			}
 		}
 
+		if(!allAppliances.includes(recipes[i].appliance)){
+			allAppliances.push(recipes[i].appliance);
+		}
+
+		recipes[i].ustensils.forEach(function(ustensil){
+			if(!allUstensils.includes(ustensil)){
+				allUstensils.push(ustensil);
+			}
+		})
+
 		list.appendChild(cardContainer);
 		cardContainer.appendChild(card);
 		card.appendChild(img);
@@ -77,6 +89,8 @@ function createDOM(){
 	}
 
 	displayIngredients(allIngredients);
+	displayAppliances(allAppliances);
+	displayUstensils(allUstensils);
 }
 
 function displayIngredients(allIngredients){
@@ -89,5 +103,31 @@ function displayIngredients(allIngredients){
 		ingredientLink.textContent = allIngredients[i];
 		ingredientList.appendChild(ingredientItem);
 		ingredientItem.appendChild(ingredientLink);
+	}
+}
+
+function displayAppliances(allAppliances){
+	const applianceList = document.querySelector('.applianceList');
+	for(let i = 0; i < allAppliances.length; i++){
+		const applianceItem = document.createElement('li');
+		const applianceLink = document.createElement('a');
+		applianceLink.href = '#';
+		applianceLink.classList.add('dropdown-item', 'applianceItem');
+		applianceLink.textContent = allAppliances[i];
+		applianceList.appendChild(applianceItem);
+		applianceItem.appendChild(applianceLink);
+	}
+}
+
+function displayUstensils(allUstensils){
+	const ustensilList = document.querySelector('.ustensilList');
+	for(let i = 0; i < allUstensils.length; i++){
+		const ustensilItem = document.createElement('li');
+		const ustensilLink = document.createElement('a');
+		ustensilLink.href = '#';
+		ustensilLink.classList.add('dropdown-item', 'ustensilItem');
+		ustensilLink.textContent = allUstensils[i];
+		ustensilList.appendChild(ustensilItem);
+		ustensilItem.appendChild(ustensilLink);
 	}
 }

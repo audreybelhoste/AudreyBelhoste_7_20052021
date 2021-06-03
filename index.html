@@ -10,7 +10,7 @@
 	<body>
 		<header class="container text-center my-4">
 			<img src="logo.svg" alt="logo Les petits plats"/>
-			<h1 class="text-primary">Les petits plats</h1>
+			<h1 class="text-info">Les petits plats</h1>
 		</header>
 		<main class="container">
 			<div class="input-group mb-4">
@@ -21,11 +21,23 @@
 			</div>
 			<ul id="tagList">
 			</ul>
-			<button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-				<input class="d-none searchTag" id="searchIngredient" type='text' placeholder="Recherche un ingrédient">
+			<button type="button" class="btn btn-primary text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+				<input class="d-none searchTag searchTag--ingredient" id="searchIngredient" type='text' placeholder="Recherche un ingrédient">
 				<span class="dropdownTitle">Ingrédients</span>
 			</button>
 			<ul class="dropdown-menu ingredientList">
+			</ul>
+			<button type="button" class="btn btn-secondary text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+				<input class="d-none searchTag searchTag--appliance" id="searchAppliance" type='text' placeholder="Recherche un appareil">
+				<span class="dropdownTitle">Appareil</span>
+			</button>
+			<ul class="dropdown-menu applianceList">
+			</ul>
+			<button type="button" class="btn btn-info text-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+				<input class="d-none searchTag searchTag--ustensil" id="searchUstensil" type='text' placeholder="Recherche un ustensile">
+				<span class="dropdownTitle">Ustensiles</span>
+			</button>
+			<ul class="dropdown-menu ustensilList">
 			</ul>
 			<section class="row" id="recipes">
 				<p class="col-12 invisible" id="noResult">Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>
