@@ -3,6 +3,7 @@ const blocsRecipe = document.querySelectorAll('.blocRecipe');
 const ingredientItem = document.querySelectorAll('.ingredientItem');
 const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
 const searchIngredient = document.getElementById('searchIngredient');
+const tagList = document.getElementById('tagList');
 
 let recipesToDisplay = [];
 recipesToDisplay = recipes;
@@ -10,6 +11,8 @@ recipesToDisplay = recipes;
 let searchTerms = [];
 // ingredient tags
 searchTerms[1] = [];
+
+let tags = [];
 
 searchBar.addEventListener('keyup', function(){
 	searchTerm = searchBar.value.toLowerCase(); 
@@ -48,8 +51,11 @@ searchIngredient.addEventListener('keyup', function(){
 
 ingredientItem.forEach(function(element) {
 	element.addEventListener('click', function() {
-		searchTerms[1].push(element.textContent);
-		searchInData(searchTerms);
+		if(!searchTerms[1].includes(element.textContent)){
+			searchTerms[1].push(element.textContent);
+			displayTag(element.textContent, searchTerms);
+			searchInData(searchTerms);
+		}
 	})
 })
 
@@ -63,16 +69,10 @@ function searchInData(searchTerms){
 		}
 
 		if(searchTerms[1].length > 0){
-			
-			console.log(ingredientsSearch(recipe, searchTerms))
-
 			if(!ingredientsSearch(recipe, searchTerms)){
-				
 				return false;
 			}
 		}
-
-		
 
 		return recipesToDisplay;
 	});
@@ -105,12 +105,9 @@ function ingredientsSearch(recipe, searchTerms){
 			}
 		}
 
-		console.log(result)
-
 		if(!result){
 			globResult = false;
 		}
-
 	})
 
 	return globResult;
@@ -161,5 +158,21 @@ function displayIngredients(recipesToDisplay){
 		if(!ingredients.includes(ingredient.textContent)){
 			ingredient.classList.add('d-none');
 		}
+	})
+}
+
+function displayTag(tagContent, searchTerms){
+	tag = document.createElement('li');
+	tag.textContent = tagContent;
+	tag.classList.add('tag', 'btn', 'btn-primary');
+	tagList.appendChild(tag);
+
+	tags.push(tag);
+	tags.forEach(function(tag) {
+		tag.addEventListener('click', function() {
+			tag.remove();
+			searchTerms[1].splice(searchTerms[1].indexOf(tag.textContent), 1);
+			searchInData(searchTerms);
+		})
 	})
 }
