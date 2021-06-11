@@ -3,15 +3,16 @@ const blocsRecipe = document.querySelectorAll('.blocRecipe');
 const ingredientItem = document.querySelectorAll('.ingredientItem');
 const applianceItem = document.querySelectorAll('.applianceItem');
 const ustensilItem = document.querySelectorAll('.ustensilItem');
-const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
+const dropdownTitle = document.querySelectorAll('.dropdownTitle');
 const searchIngredient = document.getElementById('searchIngredient');
 const tagList = document.getElementById('tagList');
 const searchTag = document.querySelectorAll('.searchTag');
 
-let recipesToDisplay = [];
-recipesToDisplay = recipes;
+let filteredRecipes = [];
+//recipesToFilter = recipes;
 // search bar
 let searchTerms = [];
+searchTerms[0] = '';
 // ingredient tags
 searchTerms[1] = [];
 // appliance tags
@@ -23,32 +24,52 @@ let tags = [];
 
 searchBar.addEventListener('keyup', function(){
 	searchTerm = searchBar.value.toLowerCase(); 
-	searchTerms[0] = searchTerm;
 
 	if(searchTerm.length > 2){
-		searchInData(searchTerms);
-	} 
-	else {
+		if(searchTerm.length != 3 && searchTerm.length > searchTerms[0].length) {
+			console.log('ici');
+			searchTerms[0] = searchTerm;
+			searchInData(searchTerms, filteredRecipes);
+		} else {
+			searchTerms[0] = searchTerm;
+			searchInData(searchTerms, recipes);
+		}
+	} else {
 		blocsRecipe.forEach(element => {
 			noResult.classList.add('invisible');
 			element.classList.remove('d-none');
-			searchInData(searchTerms);
 		});
+
+		if(searchTerms[1].length > 0 || searchTerms[2].length > 0 || searchTerms[3].length > 0){
+			searchInData(searchTerms, recipes);
+		}
 	}
 })
 
-dropdownToggle.forEach(function(element) {
+dropdownTitle.forEach(function(element) {
 	element.addEventListener('click', function() {
-		this.querySelector('.dropdownTitle').classList.add('d-none');
-		this.querySelector('.searchTag').classList.remove('d-none');
+		this.parentNode.querySelector('.dropdownTitle').classList.add('d-none');
+		this.parentNode.querySelector('.searchTag').classList.remove('d-none');
+		this.parentNode.querySelector('.searchTag').focus();
 	})
 })
 
 searchTag.forEach(function(element) {
-	element.addEventListener('focus', function() {
-		element.parentNode.nextElementSibling.setAttribute("style", "position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate(284px, 275px);");
-	})
+	element.addEventListener('click', function() {
+	});
+	// element.addEventListener('focus', function() {
+	// 	//element.parentNode.focus();
+	// 	element.parentNode.nextElementSibling.classList.add('show');
+	// });
+	element.addEventListener('keyup', function() {
+		element.parentNode.querySelector('.dropdown-menu').classList.add('show');
+	});
+	//element.addEventListener('keyup', displayListOfTags(element));
 })
+
+function displayListOfTags(element){
+	element.parentNode.nextElementSibling.classList.add('show');
+}
 
 searchIngredient.addEventListener('keyup', function(){
 	ingredientItem.forEach(element => {
@@ -68,7 +89,7 @@ ingredientItem.forEach(function(element) {
 		if(!searchTerms[1].includes(element.textContent)){
 			searchTerms[1].push(element.textContent);
 			displayTag(element.textContent, searchTerms, classListIngredient);
-			searchInData(searchTerms);
+			searchInData(searchTerms, recipes);
 		}
 	})
 })
@@ -79,7 +100,7 @@ applianceItem.forEach(function(element) {
 		if(!searchTerms[2].includes(element.textContent)){
 			searchTerms[2].push(element.textContent.toLowerCase());
 			displayTag(element.textContent, searchTerms, classListAppliance);
-			searchInData(searchTerms);
+			searchInData(searchTerms, recipes);
 		}
 	})
 })
@@ -90,13 +111,14 @@ ustensilItem.forEach(function(element) {
 		if(!searchTerms[3].includes(element.textContent)){
 			searchTerms[3].push(element.textContent.toLowerCase());
 			displayTag(element.textContent, searchTerms, classListAppliance);
-			searchInData(searchTerms);
+			searchInData(searchTerms, recipes);
 		}
 	})
 })
 
-function searchInData(searchTerms){
-	recipesToDisplay = recipes.filter(function(recipe){
+function searchInData(searchTerms, recipesToFilter){
+	console.log(recipesToFilter);
+	filteredRecipes = recipesToFilter.filter(function(recipe){
 		
 		if(searchTerms[0]){
 			if(!recipeSearch(recipe, searchTerms)){
@@ -122,12 +144,15 @@ function searchInData(searchTerms){
 			}
 		}
 
-		return recipesToDisplay;
+		return recipe;
 	});
 
-	displayRecipes(recipesToDisplay);
-	displayIngredients(recipesToDisplay);
-	displayAppliances(recipesToDisplay);
+	console.log(filteredRecipes);
+
+	displayRecipes(filteredRecipes);
+	displayIngredients(filteredRecipes);
+	displayAppliances(filteredRecipes);
+	displayUstensils(filteredRecipes);
 };
 
 function recipeSearch(recipe, searchTerms){
@@ -251,6 +276,29 @@ function displayAppliances(recipesToDisplay){
 	applianceItem.forEach(function(appliance){
 		if(!appliances.includes(appliance.textContent)){
 			appliance.classList.add('d-none');
+		}
+	})
+}
+
+function displayUstensils(recipesToDisplay){
+	ustensilItem.forEach(element => {
+		element.classList.remove('d-none');
+	});
+
+	let ustensils = [];
+	for(let i = 0; i < recipesToDisplay.length; i++){
+		for(let j = 0; j < recipesToDisplay[i].ustensils.length ; j++){
+			recipesToDisplay[i].ustensils.forEach(function(ustensil){
+				if(!ustensils.includes(ustensil)){
+					ustensils.push(ustensil);
+				}
+			})
+		}
+	}
+	
+	ustensilItem.forEach(function(ustensil){
+		if(!ustensils.includes(ustensil.textContent)){
+			ustensil.classList.add('d-none');
 		}
 	})
 }
