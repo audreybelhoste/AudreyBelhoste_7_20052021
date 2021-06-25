@@ -195,9 +195,10 @@ function ustensilsSearch(recipe, searchTerms){
 
 	searchTerms[3].forEach(function(searchTerm){
 		let result = false;
+		let ustensils = recipe.ustensils.map(ustensil => ustensil.toLowerCase());
 
-		for(let i = 0; i < recipe.ustensils.length; i++){
-			if(recipe.ustensils.toLowerCase().includes(searchTerm)){
+		for(let i = 0; i < ustensils.length; i++){
+			if(ustensils.includes(searchTerm)){
 				result = true;
 			}
 		}

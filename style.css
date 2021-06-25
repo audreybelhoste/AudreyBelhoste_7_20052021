@@ -118,8 +118,6 @@ p {
   .btn-group .dropdown-menu-custom li {
     min-width: 33%;
     display: block; }
-  .btn-group .dropdown-menu-custom.col2 li {
-    min-width: 50%; }
   .btn-group .dropdown-item-custom {
     color: white;
     text-decoration: none; }
@@ -136,7 +134,9 @@ p {
   .btn-group.col1 .searchTag {
     width: calc(200px - 32px); }
   .btn-group.col2 .dropdown-menu-custom {
-    width: 200px; }
+    width: 400px; }
+    .btn-group.col2 .dropdown-menu-custom li {
+      min-width: 50%; }
   .btn-group.col2 .searchTag {
     width: calc(400px - 32px); }
 

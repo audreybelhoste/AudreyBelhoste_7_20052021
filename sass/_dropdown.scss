@@ -73,11 +73,6 @@
 		display: block;
 	}
 	
-	.dropdown-menu-custom.col2 li {
-		min-width: 50%;
-	}
-	
-	
 	.dropdown-item-custom{
 		color: white;
 		text-decoration: none;
@@ -113,7 +108,11 @@
 
 	&.col2{
 		.dropdown-menu-custom{
-			width: 200px;
+			width: 400px;
+
+			li{
+				min-width: 50%;
+			}
 		}
 
 		.searchTag{
