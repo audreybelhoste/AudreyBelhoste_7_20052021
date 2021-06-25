@@ -72,6 +72,74 @@
 p {
   margin: 0 !important; }
 
+.btn-group {
+  position: relative;
+  width: 600px; }
+  .btn-group.col1 {
+    width: 200px; }
+    .btn-group.col1 .dropdownTitle {
+      width: calc(600px - 32px); }
+  .btn-group.col2 {
+    width: 400px; }
+  .btn-group.close {
+    width: auto; }
+    .btn-group.close .dropdownTitle {
+      width: auto; }
+  .btn-group .dropdownTitle {
+    border-radius: 5px 0 0 5px !important;
+    width: calc(600px - 32px);
+    text-align: left !important;
+    color: white !important;
+    margin-left: 0 !important; }
+  .btn-group .dropdown-menu-custom {
+    position: absolute;
+    z-index: 100;
+    list-style: none;
+    padding: 10px;
+    top: 57px;
+    width: 600px;
+    flex-wrap: wrap;
+    display: none;
+    border-radius: 0 0 5px 5px; }
+  .btn-group .searchTag {
+    border-radius: 5px 0 0 5px !important;
+    width: calc(600px - 32px);
+    padding: 10px; }
+    .btn-group .searchTag.col1 {
+      width: calc(200px - 32px); }
+    .btn-group .searchTag.col2 {
+      width: calc(400px - 32px); }
+  .btn-group .ingredientList {
+    background-color: #3282F7; }
+  .btn-group .applianceList {
+    background-color: #68D9A4; }
+  .btn-group .ustensilList {
+    background-color: #ED6454; }
+  .btn-group .dropdown-menu-custom li {
+    min-width: 33%;
+    display: block; }
+  .btn-group .dropdown-menu-custom.col2 li {
+    min-width: 50%; }
+  .btn-group .dropdown-item-custom {
+    color: white;
+    text-decoration: none; }
+  .btn-group.show .dropdown-menu-custom {
+    display: flex; }
+  .btn-group.show .dropdown-toggle {
+    border-radius: 5px 5px 0 5px; }
+  .btn-group.show .searchTag {
+    border-radius: 5px 0 0 0 !important; }
+  .btn-group.show .dropdownTitle {
+    border-radius: 5px 0 0 0 !important; }
+  .btn-group.col1 .dropdown-menu-custom {
+    width: 200px; }
+  .btn-group.col1 .searchTag {
+    width: calc(200px - 32px); }
+  .btn-group.col2 .dropdown-menu-custom {
+    width: 200px; }
+  .btn-group.col2 .searchTag {
+    width: calc(400px - 32px); }
+
 /*!
  * Bootstrap v5.0.1 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors

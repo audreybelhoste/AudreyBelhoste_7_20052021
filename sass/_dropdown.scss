@@ -1,0 +1,124 @@
+.btn-group{
+	position: relative;
+	width: 600px;
+
+	&.col1{
+		width: 200px;
+
+		.dropdownTitle{
+			width: calc(600px - 32px);
+		}
+	}
+
+	&.col2{
+		width: 400px;
+	}
+
+	&.close{
+		width: auto;
+
+		.dropdownTitle{
+			width: auto;
+		}
+	}
+
+	.dropdownTitle{
+		border-radius: 5px 0 0 5px !important; 
+		width: calc(600px - 32px);
+		text-align: left !important;
+		color: white !important;
+		margin-left: 0 !important;
+	}
+
+	.dropdown-menu-custom{
+		position: absolute;
+		z-index: 100;
+		list-style: none;
+		padding: 10px;
+		top: 57px;
+		width: 600px;
+		flex-wrap: wrap;
+		display: none;
+		border-radius: 0 0 5px 5px;
+	}
+
+	.searchTag{
+		border-radius: 5px 0 0 5px !important; 
+		width: calc(600px - 32px);
+		padding: 10px;
+	
+		&.col1{
+			width: calc(200px - 32px);
+		}
+	
+		&.col2{
+			width: calc(400px - 32px);
+		}
+	}
+	
+	.ingredientList{
+		background-color: $primary;
+	}
+	
+	.applianceList{
+		background-color: $secondary;
+	}
+	
+	.ustensilList{
+		background-color: $info;
+	}
+	
+	.dropdown-menu-custom li {
+		min-width: 33%;
+		display: block;
+	}
+	
+	.dropdown-menu-custom.col2 li {
+		min-width: 50%;
+	}
+	
+	
+	.dropdown-item-custom{
+		color: white;
+		text-decoration: none;
+	}
+
+	&.show{
+		.dropdown-menu-custom{
+			display: flex;
+		}
+
+		.dropdown-toggle{
+			border-radius: 5px 5px 0 5px;
+		}
+
+		.searchTag{
+			border-radius: 5px 0 0 0 !important; 
+		}
+
+		.dropdownTitle{
+			border-radius: 5px 0 0 0 !important;
+		}
+	}
+
+	&.col1{
+		.dropdown-menu-custom{
+			width: 200px;
+		}
+
+		.searchTag{
+			width: calc(200px - 32px);
+		}
+	}
+
+	&.col2{
+		.dropdown-menu-custom{
+			width: 200px;
+		}
+
+		.searchTag{
+			width: calc(400px - 32px);
+
+		}
+	}
+}
