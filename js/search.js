@@ -25,12 +25,22 @@ searchBar.addEventListener('keyup', function(){
 	searchTerm = searchBar.value.toLowerCase(); 
 
 	if(searchTerm.length > 2){
-		if(searchTerm.length != 3 && searchTerm.length > searchTerms[0].length) {
+		if(searchTerm.length != 3 && searchTerm.length > searchTerms[0].length) {	
 			searchTerms[0] = searchTerm.toLowerCase();
+			var start = performance.now();
 			searchInData(searchTerms, filteredRecipes);
+			var end =  performance.now();
+			var diff = end - start;
+			console.log(diff);
+			
 		} else {
 			searchTerms[0] = searchTerm;
+			var start = performance.now();
 			searchInData(searchTerms, recipes);
+			var end = performance.now(); 
+			var diff2 = end - start;
+			console.log(diff2);
+			
 		}
 	} else {
 		blocsRecipe.forEach(element => {
