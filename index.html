@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Les Petits plats</title>
 
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<header class="container text-center my-4">
+			<img src="logo.svg" alt="logo Les petits plats"/>
+			<h1 class="text-info">Les petits plats</h1>
+		</header>
+		<main class="container">
+			<div class="input-group mb-4">
+				<input type="text" class="form-control" placeholder="Rechercher un ingrédient, appareil, ustensiles ou une recette" id="searchBar">
+				<div class="input-group-append">
+					<button class="search-btn">Rechercher</button>
+				</div>
+			</div>
+			<ul id="tagList">
+			</ul>
+			<div class="btn-group close">
+				<input class="d-none searchTag searchTag--ingredient" id="searchIngredient" type='text' placeholder="Recherche un ingrédient">
+				<span class="dropdownTitle btn btn-primary disabled rounded-left">Ingrédients</span>
+				<button type="button" class="btn btn-primary text-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+				</button>
+				<ul class="dropdown-menu-custom ingredientList">
+				</ul>
+			</div>
+			<div class="btn-group close">
+				<input class="d-none searchTag searchTag--appliance" id="searchAppliance" type='text' placeholder="Recherche un appareil">
+				<span class="dropdownTitle btn btn-secondary disabled rounded-left">Appareil</span>
+				<button type="button" class="btn btn-secondary text-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+				</button>
+				<ul class="dropdown-menu-custom applianceList">
+				</ul>
+			</div>
+			<div class="btn-group close">
+				<input class="d-none searchTag searchTag--ustensil" id="searchUstensil" type='text' placeholder="Recherche un ustensile">
+				<span class="dropdownTitle btn btn-info disabled rounded-left">Ustensiles</span>
+				<button type="button" class="btn btn-info text-light dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+				</button>
+				<ul class="dropdown-menu-custom ustensilList">
+				</ul>
+			</div>
+			<section class="row" id="recipes">
+				<p class="col-12 invisible" id="noResult">Aucune recette ne correspond à votre critère… vous pouvez chercher « tarte aux pommes », « poisson », etc.</p>
+			</section>
+		</main>
+		<script src="./js/recipes.js"></script>
+		<script src="./js/homepage.js"></script>
+		<script src="./js/search.js"></script>
+		<script src="./js/dropdown.js"></script>
+	</body>
+
+</html>

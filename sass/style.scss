@@ -1,0 +1,109 @@
+$primary: #3282F7;
+$secondary: #68D9A4;
+$info: #ED6454;
+$light: #E7E7E7;
+$font-size-base: 0.75rem;
+$h2-font-size: $font-size-base * 1.5;
+$input-btn-font-size: $font-size-base * 1.5;
+$input-bg: #E7E7E7;
+$input-btn-padding-y: 0.9rem;
+$input-btn-padding-x: .75rem;
+
+.time{
+	&::after{
+		position: absolute;
+		top: 0;
+		left: -15px;
+		content: '';
+		height: 20px;
+		width: 20px;
+		background-image: url("clock.svg");
+		background-size: 20px 20px;
+	}
+}
+
+.description{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 10;
+	overflow: hidden;
+}
+
+.search-btn{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 20px;
+	background: transparent url("search.svg") center center no-repeat;
+	background-size: cover;
+	text-indent: 3000px;
+	overflow: hidden;
+	border: 0;
+	cursor: pointer;
+	width: 30px;
+	height: 30px;
+	z-index: 10;
+}
+
+.form-control{
+	border: none;
+	border-radius: 5px !important;
+
+	&::placeholder {
+		color: #000000 !important;
+		opacity: 0.5 !important;
+	}
+}
+
+.searchTag{
+	border: none;
+	outline: none;
+	color: white;
+	
+	&::placeholder{
+		color: white;
+	}
+
+	&--ingredient{
+		background-color: $primary;
+	}
+
+	&--appliance{
+		background-color: $secondary;
+	}
+
+	&--ustensil{
+		background-color: $info;
+	}
+}
+
+#tagList{
+	padding-left: 0;
+}
+
+.tag{
+	list-style: none;
+	position: relative;
+	padding-right: 40px !important;
+	margin-right: 20px;
+
+	&::after{
+		display: block;
+		content: '';
+		background-image: url("close.svg");
+		background-size: 20px 20px;
+		height: 20px;
+		width: 20px;
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: 10px;
+	}
+}
+
+p{
+	margin: 0 !important;
+}
+
+@import "dropdown.scss";
+@import "boostrap/bootstrap.scss";
