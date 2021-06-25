@@ -26,7 +26,11 @@ searchBar.addEventListener('keyup', function(){
 	searchTerms[0] = searchTerm;
 
 	if(searchTerm.length > 2){
+		var start = performance.now();
 		searchInData(searchTerms);
+		var end =  performance.now();
+		var diff = end - start;
+		console.log(diff);
 	} 
 	else {
 		blocsRecipe.forEach(element => {
