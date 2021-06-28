@@ -17,7 +17,7 @@ $input-btn-padding-x: .75rem;
 		content: '';
 		height: 20px;
 		width: 20px;
-		background-image: url("clock.svg");
+		background-image: url("img/clock.svg");
 		background-size: 20px 20px;
 	}
 }
@@ -34,7 +34,7 @@ $input-btn-padding-x: .75rem;
 	top: 50%;
 	transform: translateY(-50%);
 	right: 20px;
-	background: transparent url("search.svg") center center no-repeat;
+	background: transparent url("img/search.svg") center center no-repeat;
 	background-size: cover;
 	text-indent: 3000px;
 	overflow: hidden;
@@ -90,7 +90,7 @@ $input-btn-padding-x: .75rem;
 	&::after{
 		display: block;
 		content: '';
-		background-image: url("close.svg");
+		background-image: url("img/close.svg");
 		background-size: 20px 20px;
 		height: 20px;
 		width: 20px;

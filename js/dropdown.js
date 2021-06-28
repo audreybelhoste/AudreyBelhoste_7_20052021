@@ -1,6 +1,8 @@
+// Permet de fermer les listes au clic en dehors
 window.addEventListener('click', function(){
 	document.querySelectorAll('.btn-group').forEach(function(element) {
 		element.classList.remove('show');
+		console.log(element);
 		element.classList.add('close');
 		element.querySelector('.dropdownTitle').classList.remove('d-none');
 		element.querySelector('.searchTag').classList.add('d-none');
@@ -10,6 +12,7 @@ window.addEventListener('click', function(){
 
 const dropdownToggle = document.querySelectorAll('.dropdown-toggle');
 
+// Affiche ou masque de la liste avec changement entre nom et barre de recherche
 dropdownToggle.forEach(function(element) {
 
 	element.addEventListener('click', function(event) {
@@ -17,9 +20,9 @@ dropdownToggle.forEach(function(element) {
 		if(!this.parentNode.classList.contains('show')) {
 			btnGroup.forEach(function(element){
 				element.classList.remove('show');
-				element.parentNode.classList.add('close');
-				element.parentNode.querySelector('.dropdownTitle').classList.remove('d-none');
-				element.parentNode.querySelector('.searchTag').classList.add('d-none');
+				element.classList.add('close');
+				element.querySelector('.dropdownTitle').classList.remove('d-none');
+				element.querySelector('.searchTag').classList.add('d-none');
 			})
 			this.parentNode.classList.add('show');
 			this.parentNode.classList.remove('close');
@@ -35,12 +38,9 @@ dropdownToggle.forEach(function(element) {
 	})
 })
 
+// Permet de ne pas masque la liste au clic sur la barre de recherche
 searchTag.forEach(function(element) {
-	element.addEventListener('click', function() {
-		this.parentNode.classList.add('show');
+	element.addEventListener('click', function(event) {
+		event.stopPropagation();
 	});
 })
-
-function displayListOfTags(element){
-	element.parentNode.nextElementSibling.classList.add('show');
-}

@@ -8,6 +8,7 @@ let allUstensils= [];
 
 createDOM();
 
+// Affichage des recettes
 function createDOM(){
 
 	for(let i = 0; i < recipes.length; i++){
@@ -36,7 +37,7 @@ function createDOM(){
 		description.classList.add('description');
 	
 		cardContainer.setAttribute('nameRecipe', recipes[i].name);
-		img.src = 'img.svg';
+		img.src = 'img/img.svg';
 		cardBody.classList.add('card-body');
 		cardBody.classList.add('rounded-bottom');
 		title.textContent = recipes[i].name;
@@ -63,15 +64,18 @@ function createDOM(){
 	
 			ingredientsList.appendChild(ingredient);
 
+			// Création de la liste de tous les ingrédients
 			if(!allIngredients.includes(ingredients[j].ingredient.toLowerCase())){
 				allIngredients.push(ingredients[j].ingredient.toLowerCase());
 			}
 		}
 
+		// Création de la liste de tous les appareils
 		if(!allAppliances.includes(recipes[i].appliance)){
 			allAppliances.push(recipes[i].appliance.toLowerCase());
 		}
 
+		// Création de la liste de tous les ustensiles
 		recipes[i].ustensils.forEach(function(ustensil){
 			if(!allUstensils.includes(ustensil)){
 				allUstensils.push(ustensil.toLowerCase());
@@ -96,7 +100,8 @@ function createDOM(){
 	displayUstensils(allUstensils);
 }
 
-function displayIngredients(allIngredients){
+// Affiche les ingrédients passés en paramètre
+function displayIngredients(ingredients){
 
 	const classListIngredient = 'btn-primary';
 	if(ingredientList.hasChildNodes()){
@@ -105,7 +110,8 @@ function displayIngredients(allIngredients){
 		ingredientList.parentNode.classList.remove('col2');
 	}
 
-	switch(allIngredients.length) {
+	// Gestion de l'affichage en fonction du nombre d'ingrédients à afficher
+	switch(ingredients.length) {
 		case 0 : 
 			ingredientList.innerHTML = 'Aucun ingrédient';
 			break; 
@@ -119,13 +125,13 @@ function displayIngredients(allIngredients){
 			break;
 	}
 
-	for(let i = 0; i < allIngredients.length; i++){
+	for(let i = 0; i < ingredients.length; i++){
 		
 		const ingredientItem = document.createElement('li');
 		const ingredientLink = document.createElement('a');
 		ingredientLink.href = '#';
 		ingredientLink.classList.add('dropdown-item-custom', 'ingredientItem');
-		ingredientLink.textContent = capitalizeFirstLetter(allIngredients[i]);
+		ingredientLink.textContent = capitalizeFirstLetter(ingredients[i]);
 		ingredientList.appendChild(ingredientItem);
 		ingredientItem.appendChild(ingredientLink);
 
@@ -139,7 +145,8 @@ function displayIngredients(allIngredients){
 	}
 }
 
-function displayAppliances(allAppliances){
+// Affiche les appareils passés en paramètre
+function displayAppliances(appliances){
 	const classListAppliance = 'btn-secondary';
 	if(applianceList.hasChildNodes()){
 		applianceList.innerHTML = ' ';
@@ -147,7 +154,8 @@ function displayAppliances(allAppliances){
 		applianceList.parentNode.classList.remove('col2');
 	}
 
-	switch(allAppliances.length) {
+	// Gestion de l'affichage en fonction du nombre d'appareils à afficher
+	switch(appliances.length) {
 		case 0 : 
 		applianceList.innerHTML = 'Aucun appareil';
 			break; 
@@ -161,16 +169,15 @@ function displayAppliances(allAppliances){
 			break;
 	}
 
-	for(let i = 0; i < allAppliances.length; i++){
+	for(let i = 0; i < appliances.length; i++){
 		
 		const applianceItem = document.createElement('li');
 		const applianceLink = document.createElement('a');
 		applianceLink.href = '#';
 		applianceLink.classList.add('dropdown-item-custom', 'applianceItem');
-		applianceLink.textContent = capitalizeFirstLetter(allAppliances[i]);
+		applianceLink.textContent = capitalizeFirstLetter(appliances[i]);
 		applianceList.appendChild(applianceItem);
 		applianceItem.appendChild(applianceLink);
-
 
 		applianceItem.addEventListener('click', function() {
 			if(!searchTerms[2].includes(applianceItem.textContent.toLowerCase())){
@@ -182,7 +189,8 @@ function displayAppliances(allAppliances){
 	}
 }
 
-function displayUstensils(allUstensils){
+// Affiche les ustensiles passés en paramètre
+function displayUstensils(ustensils){
 	const classListUstensil = 'btn-info';
 	if(ustensilList.hasChildNodes()){
 		ustensilList.innerHTML = ' ';
@@ -190,7 +198,8 @@ function displayUstensils(allUstensils){
 		ustensilList.parentNode.classList.remove('col2');
 	}
 
-	switch(allUstensils.length) {
+	// Gestion de l'affichage en fonction du nombre d'ustensiles à afficher
+	switch(ustensils.length) {
 		case 0 : 
 		ustensilList.innerHTML = 'Aucun appareil';
 			break; 
@@ -204,16 +213,15 @@ function displayUstensils(allUstensils){
 			break;
 	}
 
-	for(let i = 0; i < allUstensils.length; i++){
+	for(let i = 0; i < ustensils.length; i++){
 		
 		const ustensilItem = document.createElement('li');
 		const ustensilLink = document.createElement('a');
 		ustensilLink.href = '#';
 		ustensilLink.classList.add('dropdown-item-custom', 'ustensilItem');
-		ustensilLink.textContent = capitalizeFirstLetter(allUstensils[i]);
+		ustensilLink.textContent = capitalizeFirstLetter(ustensils[i]);
 		ustensilList.appendChild(ustensilItem);
 		ustensilItem.appendChild(ustensilLink);
-
 
 		ustensilItem.addEventListener('click', function() {
 			if(!searchTerms[3].includes(ustensilItem.textContent.toLowerCase())){
@@ -225,6 +233,7 @@ function displayUstensils(allUstensils){
 	}
 }
 
+// Permet d'afficher en élément avec la première lettre en majuscule
 function capitalizeFirstLetter(element){
 	return (element+'').charAt(0).toUpperCase()+element.substr(1);
 }
