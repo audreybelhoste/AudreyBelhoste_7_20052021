@@ -9,8 +9,8 @@ const searchTag = document.querySelectorAll('.searchTag');
 const btnGroup = document.querySelectorAll('.btn-group');
 
 let filteredRecipes = [];
-// barre de recherche
 let searchTerms = [];
+// barre de recherche
 searchTerms[0] = '';
 // tags ingrédients
 searchTerms[1] = [];
@@ -256,13 +256,13 @@ function displayTag(tagContent, searchTerms, classList){
 	tags.push(tag);
 	tags.forEach(function(tag) {
 		tag.addEventListener('click', function() {
-			tag.remove();
-			if(classList == 'btn-primary'){
-				searchTerms[1].splice(searchTerms[1].indexOf(tag.textContent), 1);
-			} else if(classList == "btn-secondary") {
-				searchTerms[2].splice(searchTerms[2].indexOf(tag.textContent), 1);
-			} else if(classList == "btn-info") {
-				searchTerms[3].splice(searchTerms[3].indexOf(tag.textContent), 1);
+			this.remove();
+			if(this.classList.contains('btn-primary')){
+				searchTerms[1].splice(searchTerms[1].indexOf(this.textContent), 1);
+			} else if(this.classList.contains("btn-secondary")) {
+				searchTerms[2].splice(searchTerms[2].indexOf(this.textContent), 1);
+			} else if(this.classList.contains("btn-info")) {
+				searchTerms[3].splice(searchTerms[3].indexOf(this.textContent), 1);
 			}
 			searchInData(searchTerms, recipes);
 		})
