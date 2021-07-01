@@ -50,6 +50,7 @@ searchBar.addEventListener('keyup', function(){
 		blocsRecipe.forEach(element => {
 			element.classList.remove('d-none');
 		});
+		noResult.classList.add('invisible');
 		displayIngredients(allIngredients);
 		displayAppliances(allAppliances);
 		displayUstensils(allUstensils);
@@ -74,11 +75,10 @@ searchAppliance.addEventListener('keyup', function(){
 	searchInData(searchTerms, recipes);
 	appliances = [];
 	document.querySelectorAll('.applianceItem').forEach(element => {
-		if (element.textContent.includes(searchAppliance.value) ) {
-			appliances.push(element.textContent);
+		if (element.textContent.toLowerCase().includes(searchAppliance.value.toLowerCase()) ) {
+			appliances.push(element.textContent.toLowerCase());
 		}
 	});
-
 	displayAppliances(appliances);
 })
 
@@ -87,7 +87,7 @@ searchUstensil.addEventListener('keyup', function(){
 	searchInData(searchTerms, recipes);
 	ustensils = [];
 	document.querySelectorAll('.ustensilItem').forEach(element => {
-		if (element.textContent.toLowercase().includes(searchUstensil.value.toLowerCase()) ) {
+		if (element.textContent.toLowerCase().includes(searchUstensil.value.toLowerCase()) ) {
 			ustensils.push(element.textContent.toLowerCase());
 		}
 	});
