@@ -26,10 +26,10 @@ searchBar.addEventListener('keyup', function(){
 	searchTerms[0] = searchTerm;
 
 	if(searchTerm.length > 2){
-		var start = performance.now();
+		let start = performance.now();
 		searchInData(searchTerms);
-		var end =  performance.now();
-		var diff = end - start;
+		let end =  performance.now();
+		let diff = end - start;
 		console.log(diff);
 	} 
 	else {
