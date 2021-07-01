@@ -30,18 +30,18 @@ searchBar.addEventListener('keyup', function(){
 		if(searchTerm.length != 3 && searchTerm.length > searchTerms[0].length) {	
 			searchTerms[0] = searchTerm.toLowerCase();
 			// Permet de tester la vitesse de la recherche
-			var start = performance.now();
+			let start = performance.now();
 			searchInData(searchTerms, filteredRecipes);
-			var end =  performance.now();
-			var diff = end - start;
+			let end =  performance.now();
+			let diff = end - start;
 			console.log(diff);
 		} else {
 			searchTerms[0] = searchTerm;
 			// Permet de tester la vitesse de la recherche
-			var start = performance.now();
+			let start = performance.now();
 			searchInData(searchTerms, recipes);
-			var end = performance.now(); 
-			var diff2 = end - start;
+			let end = performance.now(); 
+			let diff2 = end - start;
 			console.log(diff2);
 			
 		}
