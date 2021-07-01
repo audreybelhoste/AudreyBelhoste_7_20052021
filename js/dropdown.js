@@ -2,7 +2,6 @@
 window.addEventListener('click', function(){
 	document.querySelectorAll('.btn-group').forEach(function(element) {
 		element.classList.remove('show');
-		console.log(element);
 		element.classList.add('close');
 		element.querySelector('.dropdownTitle').classList.remove('d-none');
 		element.querySelector('.searchTag').classList.add('d-none');
